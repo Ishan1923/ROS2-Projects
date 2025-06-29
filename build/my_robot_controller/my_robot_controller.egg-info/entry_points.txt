@@ -1,3 +1,0 @@
-[console_scripts]
-main = my_robot_controller.main:main
-
