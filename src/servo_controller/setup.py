@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+		'servo_node = servo_controller.servo_swwep:main',
         ],
     },
 )
