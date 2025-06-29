@@ -1,0 +1,29 @@
+
+#ROS2 build artifcats
+build/
+install/
+log/
+
+#python cache
+__pycache__/
+*.pyc
+
+#vscode ides
+.vscode/
+.idea/
+
+#editor swap files
+*~
+*.swp
+
+#Docker system folders
+.docker/
+
+#virtual enviornment file if any
+.venv/
+
+#api key folders
+.api/
+
+#ssh key folder
+.ssh/
