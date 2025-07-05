@@ -9,13 +9,16 @@ import time
 class ServoControllerNode(Node):
 	def __init__(self):
 		super().__init__('servo_controller')
-		self.gpio_pin = 4
-		gpio.setmode(gpio.BCM)
-		gpio.setup(self.gpio_pin, gpio.OUT)
-		self.pwm = gpio.PWM(self.gpio_pin, 50)
-		self.pwm.start(0)
-		self.thread = threading.Thread(target=self.sweep_loop)
-		self.thread.start()
+		self.gpio_pin = 4 #setting the gpio pin
+		gpio.setmode(gpio.BCM) #To set the pin numbering as same as the gpio pin numbering on the board (Broadcom soc channel)
+		gpio.setup(self.gpio_pin, gpio.OUT)	#pinmode; whether the specified pin will be used for input or output operations
+		self.pwm = gpio.PWM(self.gpio_pin, 50)	#setting the duty cycle for the signal on the pin; here it is 50%
+		self.pwm.start(0) #to initially start at del theta = 0deg
+		self.thread = threading.Thread(target=self.sweep_loop) #making a parallel thread to do the task asynchronously
+		self.thread.start() #startign the parallerl thread
+		print("initialized ServoControllerNode use gpio pin 4 for servo control")
+		print("setting the servo at 0 degrees")
+		self.set_angle(0);
 
 	def set_angle(self, angle):
 		duty = 2.5 + (angle / 180.0) * 10
@@ -24,9 +27,9 @@ class ServoControllerNode(Node):
 
 	def sweep_loop(self):
 		while rclpy.ok():
-			for angle in range(0,181, 5):
+			for angle in range(0,120, 1):
 				self.set_angle(angle)
-			for angle in range(180, -1, -5):
+			for angle in range(120, 0, -1):
 				self.set_angle(angle)
 
 	def angle_callback(self, msg):

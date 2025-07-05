@@ -12,6 +12,7 @@ ENV DEBIAN_FRONTEND = noninteractive
 #Install tools
 RUN apt update && apt install -y \
 build-essential \
+python3.12 \
 python3-pip \
 git \
 wget \
@@ -21,10 +22,10 @@ nano \
 ssh \
 
 #create a working directory
-RUN mkdir -p /ros2_ws/src
+RUN mkdir -p src
 
 #set the woeking directory
-WORKDIR /ros2_ws
+WORKDIR /
 
 RUN mkdir -p /.ssh/key/
 
