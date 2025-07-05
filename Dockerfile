@@ -7,27 +7,26 @@
 FROM ros:humble-ros-base
 
 #avoid prompts during installation
-ENV DEBIAN_FRONTEND = noninteractive
+ENV UBUNTU_FRONTEND = noninteractive
 
 #Install tools
 RUN apt update && apt install -y \
 build-essential \
 python3.12 \
 python3-pip \
+nano \
+ssh \
 git \
 wget \
 curl \
 ros-dev-tools \
-nano \
 ssh \
 
 #create a working directory
 RUN mkdir -p src
 
 #set the woeking directory
-WORKDIR /
-
-RUN mkdir -p /.ssh/key/
+WORKDIR /ros2_ws/
 
 #use bash as the default shell
 CMD ["bash"]
