@@ -44,13 +44,13 @@ class HCSR04(node):
 		#geting the timestamps for the recieved pulses via echo_pin ==>
 		#getting the starting of pulse time stamp
 		#wait for echo pin to get high with timeout
-		timeout = time.time() + 0.1
+		timeout = time.time() + 0.1 # deadline for loop to prevent infinite wait
 		while gpio.input(self.echo_pin) == 0 and time.time() < timeout:
 			#time.time() will keep updating the pulse_start timestamp until the input from echo_pin becomes 1
 			self.pulse_start = time.time()
 		#getting the ending time stamp for the reciving pulse
 		#wait for echo pin to get low with timeout
-		timeout = time.time() + 0.1
+		timeout = time.time() + 0.1 # deadline for loop to prevent infinite wait
 		while gpio.input(self.echo_pin) == 1 and time.time() < timeout:
 			#time.time() will keep updating the pulse_end timestamp val as in above
 			self.pulse_end = time.time()
