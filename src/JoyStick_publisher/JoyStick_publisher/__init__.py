@@ -1,3 +1,4 @@
+'''
 import rclpy
 import RPi.GPIO as gpio
 import math.pi
@@ -31,3 +32,4 @@ def main(args = None):
 
 if __name__ == '__main__':
 	main()
+'''

@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'my_robot_controller'
+package_name = 'HCSR04_pub'
 
 setup(
     name=package_name,
@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-		'hello_world = my_robot_controller.main:main',
+		# '<excutable_name> = <pkg_name>.<module_name>:<main_function>'
+		'hcsr04_node = HCSR04_pub.__init__:main',
         ],
     },
 )
